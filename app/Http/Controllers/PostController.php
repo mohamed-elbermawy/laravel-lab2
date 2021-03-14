@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,9 +23,12 @@ class PostController extends Controller
         $post = Post::find($post);
         // $post = Post::where('title', 'Javascript')->first(); //this makes limit 1 and returns first result  select * from posts where title = 'Javascript' limit 1;
         // $postsWithTitle = Post::where('title', 'Javascript')->get(); //this gets all results select * from posts where title = 'Javascript';
-
+        $dt = Carbon::parse($post['cerated_at'],'UTC');
+        $time_format = $dt->isoFormat('MMMM Do YYYY, h:mm:ss a');
+        // $format2 = $dt->isoFormat('YY-M-D');
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'time_format' => $time_format
         ]);
     }
 
@@ -82,7 +86,7 @@ class PostController extends Controller
 
     public function destroy($post)
     {
-        dd($post);
+        Post::destroy($post);
         return redirect()->route('posts.index');
     }
     
