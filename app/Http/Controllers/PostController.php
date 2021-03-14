@@ -79,5 +79,11 @@ class PostController extends Controller
         return redirect()->route('posts.index');
         // return view('posts.index');
     }
+
+    public function destroy($post)
+    {
+        dd($post);
+        return redirect()->route('posts.index');
+    }
     
 }
