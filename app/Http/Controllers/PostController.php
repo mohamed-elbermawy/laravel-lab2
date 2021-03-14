@@ -69,9 +69,11 @@ class PostController extends Controller
         ]);
     }
 
-    public function update($post)
+    public function update($post, Request $myRequestObject)
     {
-        
+        // $data = $myRequestObject->all();
+        //dd($data);
+        Post::find($post)->update($myRequestObject->all());
         //logic for saving in db
         // dd("skksks");
         return redirect()->route('posts.index');
