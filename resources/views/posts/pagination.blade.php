@@ -8,12 +8,12 @@
         <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">Previous</a></li>
         @endif
 
-        <!-- Pagination Elements -->
-        <!-- @foreach ($elements as $element) -->
+        Pagination Elements -->
+        @foreach ($elements as $element)
         <!-- "Three Dots" Separator -->
-        <!-- @if (is_string($element))
+        @if (is_string($element))
         <li class="disabled"><span>{{ $element }}</span></li>
-        @endif -->
+        @endif
 
         <!-- Array Of Links -->
         @if (is_array($element))
